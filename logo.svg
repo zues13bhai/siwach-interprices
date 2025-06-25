@@ -1,0 +1,20 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font-family: Arial, sans-serif; font-weight: bold; }
+    .primary { fill: #000000; }
+    .secondary { fill: #0071ae; }
+  </style>
+  
+  <!-- Logo Icon -->
+  <path class="secondary" d="M30 10 L40 25 L30 40 L20 25 Z" />
+  
+  <!-- Company Name -->
+  <text x="50" y="32" class="text primary" font-size="24">
+    SIWACH
+  </text>
+  
+  <!-- Tagline -->
+  <text x="50" y="45" class="text secondary" font-size="12">
+    ENTERPRISES
+  </text>
+</svg>
