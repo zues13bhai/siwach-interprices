@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeFromCart } from '../store/cartSlice';
-import { TrashIcon } from '@heroicons/react/24/outline';
+import { removeFromCart, increaseQuantity, decreaseQuantity } from '../store/cartSlice';
+import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -12,12 +12,8 @@ export default function Cart() {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Your cart is empty
-          </h2>
-          <p className="mt-4 text-lg text-gray-500">
-            Start shopping to add items to your cart
-          </p>
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Your cart is empty</h2>
+          <p className="mt-4 text-lg text-gray-500">Start shopping to add items to your cart</p>
           <div className="mt-6">
             <Link
               to="/products"
@@ -56,23 +52,36 @@ export default function Cart() {
                       </h3>
                       <p className="ml-4">${item.totalPrice.toFixed(2)}</p>
                     </div>
-                    <p className="mt-1 text-sm text-gray-500">
-                      Size: {item.size}
-                    </p>
+                    <p className="mt-1 text-sm text-gray-500">Size: {item.size}</p>
                   </div>
-                  <div className="flex-1 flex items-end justify-between text-sm">
-                    <p className="text-gray-500">Qty {item.quantity}</p>
 
-                    <div className="flex">
+                  <div className="flex-1 flex items-end justify-between text-sm">
+                    <div className="flex items-center gap-2">
                       <button
-                        type="button"
-                        onClick={() => dispatch(removeFromCart({ id: item.id, size: item.size }))}
-                        className="font-medium text-accent hover:text-accent/90 inline-flex items-center"
+                        onClick={() => dispatch(decreaseQuantity({ id: item.id, size: item.size }))}
+                        aria-label="Decrease quantity"
+                        className="p-2 rounded hover:bg-gray-200"
                       >
-                        <TrashIcon className="h-5 w-5 mr-1" />
-                        Remove
+                        <MinusIcon className="h-4 w-4" />
+                      </button>
+                      <span className="px-2">{item.quantity}</span>
+                      <button
+                        onClick={() => dispatch(increaseQuantity({ id: item.id, size: item.size }))}
+                        aria-label="Increase quantity"
+                        className="p-2 rounded hover:bg-gray-200"
+                      >
+                        <PlusIcon className="h-4 w-4" />
                       </button>
                     </div>
+
+                    <button
+                      type="button"
+                      onClick={() => dispatch(removeFromCart({ id: item.id, size: item.size }))}
+                      className="font-medium text-accent hover:text-accent/90 inline-flex items-center"
+                    >
+                      <TrashIcon className="h-5 w-5 mr-1" />
+                      Remove
+                    </button>
                   </div>
                 </div>
               </li>
@@ -98,10 +107,7 @@ export default function Cart() {
         <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
           <p>
             or{' '}
-            <Link
-              to="/products"
-              className="text-accent hover:text-accent/90 font-medium"
-            >
+            <Link to="/products" className="text-accent hover:text-accent/90 font-medium">
               Continue Shopping
             </Link>
           </p>
