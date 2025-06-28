@@ -7,23 +7,23 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Siwach Enterprises - Built for the Bold. Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories."
+      content="Siwach Enterprises - Built for the Bold. Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories. Made in India, built for the world."
     />
-    <meta name="keywords" content="sportswear, athletic gear, premium shoes, fitness apparel, sports technology, Indian brand, performance wear" />
+    <meta name="keywords" content="sportswear, athletic gear, premium shoes, fitness apparel, sports technology, Indian brand, performance wear, Siwach Enterprises, built for the bold, streetwear, sports tech" />
     <meta name="author" content="Siwach Enterprises" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://siwachenterprises.com/" />
-    <meta property="og:title" content="Siwach Enterprises - Built for the Bold" />
-    <meta property="og:description" content="Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories." />
+    <meta property="og:title" content="Siwach Enterprises - Built for the Bold | Premium Sportswear" />
+    <meta property="og:description" content="Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories. Made in India, built for the world." />
     <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://siwachenterprises.com/" />
-    <meta property="twitter:title" content="Siwach Enterprises - Built for the Bold" />
-    <meta property="twitter:description" content="Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories." />
+    <meta property="twitter:title" content="Siwach Enterprises - Built for the Bold | Premium Sportswear" />
+    <meta property="twitter:description" content="Premium sportswear and athletic gear designed for champions. Discover our collection of high-performance shoes, apparel, and tech accessories. Made in India, built for the world." />
     <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -37,7 +37,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
-    <title>Siwach Enterprises | Premium Sportswear & Athletic Gear - Built for the Bold</title>
+    <title>Siwach Enterprises | Built for the Bold - Premium Sportswear & Athletic Gear</title>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -47,23 +47,95 @@
       "name": "Siwach Enterprises",
       "url": "https://siwachenterprises.com",
       "logo": "https://siwachenterprises.com/logo.png",
-      "description": "Premium sportswear and athletic gear designed for champions",
+      "description": "Premium sportswear and athletic gear designed for champions. Built for the bold.",
+      "slogan": "Built for the Bold. Worn by the Driven.",
+      "foundingDate": "2019",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "IN",
         "addressRegion": "Maharashtra",
         "addressLocality": "Mumbai"
       },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-98765-43210",
+        "contactType": "customer service",
+        "email": "hello@siwachenterprises.com"
+      },
       "sameAs": [
         "https://www.instagram.com/siwachenterprises",
         "https://www.twitter.com/siwachenterprises",
-        "https://www.linkedin.com/company/siwachenterprises"
+        "https://www.linkedin.com/company/siwachenterprises",
+        "https://www.youtube.com/siwachenterprises"
       ]
     }
     </script>
+
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="//images.pexels.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-logo {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #ffffff;
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Loading screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-logo">SIWACH</div>
+    </div>
+    
     <div id="root"></div>
+    
+    <!-- Remove loading screen after app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+            setTimeout(function() {
+              loadingScreen.remove();
+            }, 500);
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>
