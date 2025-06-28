@@ -22,7 +22,6 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={<div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
-      }
       </div>} persistor={persistor}>
         <Router>
           <div className="min-h-screen flex flex-col bg-black text-white">
