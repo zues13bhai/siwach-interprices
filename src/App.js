@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './index';
+import { store, persistor } from './store';
 
 // Components
 import Navbar from './components/Navbar';
@@ -20,9 +20,11 @@ import Profile from './pages/Profile';
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>} persistor={persistor}>
         <Router>
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col bg-black text-white">
             <Navbar />
             <main className="flex-grow">
               <Routes>
