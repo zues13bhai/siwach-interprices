@@ -22,7 +22,7 @@
   /* Custom font for the brand */
   @font-face {
     font-family: 'AdihausDIN';
-    src: url('./fonts/AdihausDIN-Regular.woff2') format('woff2');
+    src: url('../AdihausDIN-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -30,7 +30,7 @@
 
   @font-face {
     font-family: 'AdihausDIN';
-    src: url('./fonts/AdihausDIN-Bold.woff2') format('woff2');
+    src: url('../AdihausDIN-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
     font-display: swap;

@@ -17,7 +17,7 @@ const navigation = [
 export default function Navbar() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.totalQuantity);
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const [isScrolled, setIsScrolled] = useState(false);
 
   React.useEffect(() => {
