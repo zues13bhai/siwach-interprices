@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { removeFromCart, clearCart } from '../store/cartSlice';
-import { TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { TrashIcon } from '@heroicons/react/24/outline'; // ✅ Only used icon
 
 export default function Cart() {
   const dispatch = useDispatch();
