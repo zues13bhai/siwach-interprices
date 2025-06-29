@@ -110,3 +110,5 @@ export default function Cart() {
     </div>
   );
 }
+fix: removed unused icons to resolve Netlify build error
+
