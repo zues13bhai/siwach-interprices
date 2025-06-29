@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeFromCart } from '../store/cartSlice';
-import { TrashIcon } from '@heroicons/react/24/outline';
+//import { TrashIcon } from '@heroicons/react/24/outline';
 
 export default function Cart() {
   const dispatch = useDispatch();
