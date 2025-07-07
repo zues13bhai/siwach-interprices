@@ -347,9 +347,9 @@ export const products = [
     category: 'new',
     price: 1999,
     originalPrice: 2499,
-    image: 'https://images.pexels.com/photos/6456304/pexels-photo-6456304.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBnp',
     images: [
-      'https://images.pexels.com/photos/6456304/pexels-photo-6456304.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBn'
     ],
     description: 'Engineered grip technology for uncompromising performance',
     fullDescription: 'The Power Grip Gloves feature revolutionary grip technology developed in partnership with professional athletes. The textured palm surface provides 300% better grip than traditional gloves, while the breathable mesh backing keeps hands cool and dry during intense training sessions.',
