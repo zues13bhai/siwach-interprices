@@ -263,9 +263,9 @@ export const products = [
     category: 'tech',
     price: 7999,
     originalPrice: 9999,
-    image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/VFYNzHC5xl4gVkp9Tb9gIBx3yxaWA21K9727I1Q8O_s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZWFz/b25zdHdlbHZlLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wNC9zb3VuZHBl/YXRzLXNvbmljLXBy/by13aXJlbGVzcy1l/YXJidWRzLXFjX21h/aW4tMS5qcGc',
     images: [
-      'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/VFYNzHC5xl4gVkp9Tb9gIBx3yxaWA21K9727I1Q8O_s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZWFz/b25zdHdlbHZlLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wNC9zb3VuZHBl/YXRzLXNvbmljLXBy/by13aXJlbGVzcy1l/YXJidWRzLXFjX21h/aW4tMS5qcGc'
     ],
     description: 'Immersive audio engineered for athletic excellence',
     fullDescription: 'The Sonic Wireless Earbuds deliver studio-quality audio in a design built for athletes. Featuring custom-tuned drivers and adaptive noise cancellation, they provide the perfect soundtrack to your training. The secure-fit design stays comfortable during the most intense workouts, while the sweat-resistant coating ensures durability.',
