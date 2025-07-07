@@ -67,9 +67,9 @@ export const products = [
     category: 'men',
     price: 2999,
     originalPrice: 3999,
-    image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/FxK5q_jBYBpZP6b3lnfbylvlaSlEQuqpDv7xuZa_RB8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzVhLzMw/LzE3LzVhMzAxNzk0/MzA0YWZmMDViMTM5/YTA4Zjc3YzlhZjBh/LmpwZw',
     images: [
-      'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/FxK5q_jBYBpZP6b3lnfbylvlaSlEQuqpDv7xuZa_RB8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzVhLzMw/LzE3LzVhMzAxNzk0/MzA0YWZmMDViMTM5/YTA4Zjc3YzlhZjBh/LmpwZw'
     ],
     description: 'Unleash your potential with unrestricted movement',
     fullDescription: 'Designed for athletes who demand perfection in every rep. The Elite Performance Shorts feature our revolutionary FlexWeave™ fabric that moves with your body while maintaining shape. Integrated compression zones provide muscle support, while the quick-dry technology keeps you comfortable during the most intense sessions. Laser-cut ventilation zones and flatlock seams ensure zero chafing.',
