@@ -123,9 +123,9 @@ export const products = [
     category: 'women',
     price: 6999,
     originalPrice: 8999,
-    image: 'https://imgs.search.brave.com/HU34u-b522_TqeF0l3seIjzYdSsRw6m1aJEw5cfpT24/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcw/MS56dGF0Lm5ldC9h/cnRpY2xlL3NwcC1t/ZWRpYS1wMS85YzNi/YTY4NzM3M2M0MTU2/YTIwOGJhODVjMTUy/ODA0Ni9mYWZhNTU1/NjZhOWY0YWEzODFh/MGMzMDVjMTI5YmZi/My5qcGc_aW13aWR0/aD0zMDA',
+    image: 'https://imgs.search.brave.com/qP48qxMfbfFNo0G-8eZa1yHvihyqXjcp0le6ZJZ6DiE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErLU9mYjBYMkwu/anBn',
     images: [
-      'https://imgs.search.brave.com/HU34u-b522_TqeF0l3seIjzYdSsRw6m1aJEw5cfpT24/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcw/MS56dGF0Lm5ldC9h/cnRpY2xlL3NwcC1t/ZWRpYS1wMS85YzNi/YTY4NzM3M2M0MTU2/YTIwOGJhODVjMTUy/ODA0Ni9mYWZhNTU1/NjZhOWY0YWEzODFh/MGMzMDVjMTI5YmZi/My5qcGc_aW13aWR0/aD0zMDA'
+      'https://imgs.search.brave.com/qP48qxMfbfFNo0G-8eZa1yHvihyqXjcp0le6ZJZ6DiE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErLU9mYjBYMkwu/anBn'
     ],
     description: 'Conquer every element with sophisticated protection',
     fullDescription: 'The Stealth Training Jacket represents the perfect fusion of style and performance. Engineered with our exclusive WeatherShield™ technology, it adapts to changing conditions while maintaining breathability. The sleek silhouette flatters your form while providing unrestricted movement. Features include laser-welded seams for waterproofing and strategically placed ventilation zones.',
