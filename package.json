@@ -18,6 +18,10 @@
     "redux-persist": "^6.0.0",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "netlify-cli": "^22.2.1",
+    "tailwindcss": "^3.3.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -42,8 +46,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "netlify-cli": "^22.2.1",
-    "tailwindcss": "^3.3.5"
+  "engines": {
+    "node": "18.x"
   }
 }
