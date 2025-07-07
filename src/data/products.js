@@ -399,9 +399,9 @@ export const products = [
     category: 'new',
     price: 8999,
     originalPrice: 11999,
-    image: 'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/jXASrwro3klAzuWlsslcTqxfAffZOcf7ZuvRDuOxc4o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z29ydWNrLmNvbS9j/ZG4vc2hvcC9maWxl/cy9TUlRWZXN0c01h/eTE5MTU5XzQwMHgu/anBnP3Y9MTc0Nzky/Mzk4OQ',
     images: [
-      'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/jXASrwro3klAzuWlsslcTqxfAffZOcf7ZuvRDuOxc4o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z29ydWNrLmNvbS9j/ZG4vc2hvcC9maWxl/cy9TUlRWZXN0c01h/eTE5MTU5XzQwMHgu/anBnP3Y9MTc0Nzky/Mzk4OQ'
     ],
     description: 'Revolutionary hydration system for endurance athletes',
     fullDescription: 'The Hydro Training Vest represents a breakthrough in endurance training gear. The integrated hydration system delivers precise fluid delivery while the lightweight mesh construction ensures optimal ventilation. Designed for marathon runners, cyclists, and endurance athletes who demand continuous hydration without compromise.',
