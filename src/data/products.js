@@ -291,9 +291,9 @@ export const products = [
     category: 'tech',
     price: 3999,
     originalPrice: 4999,
-    image: 'https://imgs.search.brave.com/O1wHb6YTAy9Fza4F0F3W9HjJE_bshuLQoHQFa0Chdqw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9udXBv/LmNvbS9jZG4vc2hv/cC9maWxlcy9icmlu/Z2l0LmpwZz92PTE3/Mjc5NjI4MDImd2lk/dGg9MTQ0NQ',
+    image: 'https://imgs.search.brave.com/urngwDyk9vvDH7ILZjRijGtXCusQ1Ei1TJHAhD0JSBk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9udXBv/LmNvbS9jZG4vc2hv/cC9maWxlcy8yTnVw/b19EYXJrX2FuZF9C/bHVlX3dhdGVyX2Jv/dHRsZV9rb3BpZXIu/d2VicD92PTE3Mjc5/NjI4MDMmd2lkdGg9/MTQ0NQ',
     images: [
-      'https://imgs.search.brave.com/O1wHb6YTAy9Fza4F0F3W9HjJE_bshuLQoHQFa0Chdqw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9udXBv/LmNvbS9jZG4vc2hv/cC9maWxlcy9icmlu/Z2l0LmpwZz92PTE3/Mjc5NjI4MDImd2lk/dGg9MTQ0NQ'
+      'https://imgs.search.brave.com/urngwDyk9vvDH7ILZjRijGtXCusQ1Ei1TJHAhD0JSBk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9udXBv/LmNvbS9jZG4vc2hv/cC9maWxlcy8yTnVw/b19EYXJrX2FuZF9C/bHVlX3dhdGVyX2Jv/dHRsZV9rb3BpZXIu/d2VicD92PTE3Mjc5/NjI4MDMmd2lkdGg9/MTQ0NQ'
     ],
     description: 'Intelligent hydration for peak performance',
     fullDescription: 'The Smart Water Bottle revolutionizes hydration with intelligent tracking and temperature control. Built-in sensors monitor your intake and provide personalized hydration recommendations based on your activity level and environmental conditions. The double-wall vacuum insulation maintains temperature for 24 hours.',
