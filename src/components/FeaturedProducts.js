@@ -1,91 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const products = [
-  {
-    id: 1,
-    name: 'Siwach X Velocity Pro',
-    category: 'Running Shoes',
-    price: '₹8,999',
-    originalPrice: '₹12,999',
-    image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'BESTSELLER',
-    description: 'Ultra-lightweight performance running shoes with advanced cushioning technology'
-  },
-  {
-    id: 2,
-    name: 'Urban Strike Hoodie',
-    category: 'Streetwear',
-    price: '₹4,999',
-    originalPrice: '₹6,999',
-    image: 'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'NEW DROP',
-    description: 'Premium cotton blend hoodie with signature Siwach branding'
-  },
-  {
-    id: 3,
-    name: 'Elite Performance Shorts',
-    category: 'Training Gear',
-    price: '₹2,999',
-    originalPrice: '₹3,999',
-    image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'LIMITED',
-    description: 'Moisture-wicking training shorts designed for peak performance'
-  },
-  {
-    id: 4,
-    name: 'Quantum Fitness Tracker',
-    category: 'Sports Tech',
-    price: '₹15,999',
-    originalPrice: '₹19,999',
-    image: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'TECH',
-    description: 'Advanced fitness tracking with AI-powered performance insights'
-  },
-  {
-    id: 5,
-    name: 'Stealth Training Jacket',
-    category: 'Outerwear',
-    price: '₹6,999',
-    originalPrice: '₹8,999',
-    image: 'https://images.pexels.com/photos/8532617/pexels-photo-8532617.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'PREMIUM',
-    description: 'Weather-resistant training jacket with thermal regulation'
-  },
-  {
-    id: 6,
-    name: 'Power Grip Gloves',
-    category: 'Accessories',
-    price: '₹1,999',
-    originalPrice: '₹2,499',
-    image: 'https://images.pexels.com/photos/6456304/pexels-photo-6456304.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'ESSENTIAL',
-    description: 'Professional-grade training gloves with enhanced grip technology'
-  },
-  {
-    id: 7,
-    name: 'Apex Training Tights',
-    category: 'Compression Wear',
-    price: '₹3,499',
-    originalPrice: '₹4,999',
-    image: 'https://images.pexels.com/photos/6456299/pexels-photo-6456299.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'PRO',
-    description: 'Compression tights with muscle support and recovery technology'
-  },
-  {
-    id: 8,
-    name: 'Sonic Wireless Earbuds',
-    category: 'Audio Tech',
-    price: '₹7,999',
-    originalPrice: '₹9,999',
-    image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=600',
-    badge: 'WIRELESS',
-    description: 'Premium wireless earbuds designed for athletes and fitness enthusiasts'
-  }
-];
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/cartSlice';
+import { getFeaturedProducts } from '../data/products';
 
 export default function FeaturedProducts() {
+  const dispatch = useDispatch();
+  const products = getFeaturedProducts();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: product.sizes[0] // Default to first available size
+    }));
+  };
+
   return (
     <section className="py-24 bg-gray-950 relative overflow-hidden">
       {/* Background Pattern */}
@@ -156,7 +89,10 @@ export default function FeaturedProducts() {
                     >
                       VIEW
                     </Link>
-                    <button className="bg-transparent border-2 border-white text-white px-6 py-2 font-bold hover:bg-white hover:text-black transition-colors duration-200 transform hover:scale-105">
+                    <button 
+                      onClick={() => handleAddToCart(product)}
+                      className="bg-transparent border-2 border-white text-white px-6 py-2 font-bold hover:bg-white hover:text-black transition-colors duration-200 transform hover:scale-105"
+                    >
                       ADD TO CART
                     </button>
                   </div>
@@ -176,11 +112,13 @@ export default function FeaturedProducts() {
                 </p>
                 <div className="flex items-center gap-3 pt-2">
                   <span className="text-xl font-black text-white">
-                    {product.price}
+                    ₹{product.price.toLocaleString()}
                   </span>
-                  <span className="text-sm text-gray-500 line-through">
-                    {product.originalPrice}
-                  </span>
+                  {product.originalPrice && (
+                    <span className="text-sm text-gray-500 line-through">
+                      ₹{product.originalPrice.toLocaleString()}
+                    </span>
+                  )}
                 </div>
               </div>
             </motion.div>
