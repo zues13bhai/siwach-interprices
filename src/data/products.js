@@ -179,9 +179,9 @@ export const products = [
     category: 'women',
     price: 2499,
     originalPrice: 3299,
-    image: 'https://images.pexels.com/photos/6456304/pexels-photo-6456304.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/OgQSuLJcFDRbAQ06I1mAPuqS2NkGQYQ8zg8LYIF4N30/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2VhcmV0YWxhLmNv/bS9jZG4vc2hvcC9m/aWxlcy9EYXlmbGV4/X1J1Y2hlZHN0cmFw/YmFuZGVhdWJyYV9T/aGFkb3dibGFja18x/MzUyLmpwZz92PTE3/MzcxMjE3MTYmd2lk/dGg9MzAw',
     images: [
-      'https://images.pexels.com/photos/6456304/pexels-photo-6456304.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/OgQSuLJcFDRbAQ06I1mAPuqS2NkGQYQ8zg8LYIF4N30/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2VhcmV0YWxhLmNv/bS9jZG4vc2hvcC9m/aWxlcy9EYXlmbGV4/X1J1Y2hlZHN0cmFw/YmFuZGVhdWJyYV9T/aGFkb3dibGFja18x/MzUyLmpwZz92PTE3/MzcxMjE3MTYmd2lk/dGg9MzAw'
     ],
     description: 'Uncompromising support meets feminine elegance',
     fullDescription: 'The Flex Sports Bra redefines athletic support with its innovative design. Featuring our exclusive FlexSupport™ technology, it adapts to your movement while providing consistent support. The moisture-wicking fabric keeps you dry and comfortable, while the seamless construction ensures all-day comfort.',
