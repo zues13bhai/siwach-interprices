@@ -347,9 +347,8 @@ export const products = [
     category: 'new',
     price: 1999,
     originalPrice: 2499,
-    image: 'https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBnp',
-    images: [
-      'https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBn'
+    image:  'https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBnp',
+    images: ['https://imgs.search.brave.com/xD_KzF10ZwNURbVoXR5Q6QUmMtOhwzkqzEeZHS_bI6A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODFIdDFUVnlWMUwu/anBn'
     ],
     description: 'Engineered grip technology for uncompromising performance',
     fullDescription: 'The Power Grip Gloves feature revolutionary grip technology developed in partnership with professional athletes. The textured palm surface provides 300% better grip than traditional gloves, while the breathable mesh backing keeps hands cool and dry during intense training sessions.',
