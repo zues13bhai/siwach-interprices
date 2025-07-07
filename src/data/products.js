@@ -151,9 +151,9 @@ export const products = [
     category: 'women',
     price: 3499,
     originalPrice: 4999,
-    image: 'https://images.pexels.com/photos/6456299/pexels-photo-6456299.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/ZtQbsEOiWcGRBY5TTDFvKCEHRil9JaWBpEQeEPap4QY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly92M2Fw/cGFyZWwuY29tL2Nk/bi9zaG9wL2ZpbGVz/L1YzX0FwcGFyZWxf/d29tZW5fc19ibGFj/a190ZW1wb19zY3J1/bmNoX2J1bV93b3Jr/b3V0X2d5bV9sZWdn/aW5nc19hbmRfZml0/bmVzc190aWdodHNf/Zm9yX3lvZ2FfcnVu/bmluZ19hbmRfcGls/YXRlc18tX2xpZmVz/dHlsZS5wbmc_dj0x/NzQxNzk2NzYyJndp/ZHRoPTI4NDQ',
     images: [
-      'https://images.pexels.com/photos/6456299/pexels-photo-6456299.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/ZtQbsEOiWcGRBY5TTDFvKCEHRil9JaWBpEQeEPap4QY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly92M2Fw/cGFyZWwuY29tL2Nk/bi9zaG9wL2ZpbGVz/L1YzX0FwcGFyZWxf/d29tZW5fc19ibGFj/a190ZW1wb19zY3J1/bmNoX2J1bV93b3Jr/b3V0X2d5bV9sZWdn/aW5nc19hbmRfZml0/bmVzc190aWdodHNf/Zm9yX3lvZ2FfcnVu/bmluZ19hbmRfcGls/YXRlc18tX2xpZmVz/dHlsZS5wbmc_dj0x/NzQxNzk2NzYyJndp/ZHRoPTI4NDQ'
     ],
     description: 'Sculpt your strength with intelligent compression',
     fullDescription: 'Experience the future of athletic wear with the Apex Training Tights. Our proprietary GradualFit™ compression technology provides targeted support to key muscle groups, enhancing performance and accelerating recovery. The high-waisted design offers core support while the seamless construction eliminates pressure points. Crafted from Italian-milled fabric for unparalleled comfort.',
