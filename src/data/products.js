@@ -95,9 +95,9 @@ export const products = [
     category: 'men',
     price: 1999,
     originalPrice: 2499,
-    image: 'https://images.pexels.com/photos/6456299/pexels-photo-6456299.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/CijMuEBZRXie7SVZlVfSQ31rc5bQ7-T-uUxoAyDb9cE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjF1dTcwSHhuMVMu/anBn',
     images: [
-      'https://images.pexels.com/photos/6456299/pexels-photo-6456299.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/CijMuEBZRXie7SVZlVfSQ31rc5bQ7-T-uUxoAyDb9cE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjF1dTcwSHhuMVMu/anBn'
     ],
     description: 'Sculpted for strength, engineered for endurance',
     fullDescription: 'The Power Training Tank is precision-cut for the serious athlete. Featuring our signature muscle-mapping technology, this tank provides targeted support where you need it most. The ultra-lightweight fabric feels like a second skin while advanced moisture management keeps you dry and focused.',
