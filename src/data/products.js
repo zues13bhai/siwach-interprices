@@ -426,9 +426,9 @@ export const products = [
     category: 'new',
     price: 999,
     originalPrice: 1299,
-    image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/qAOptNDRz_LSwHq3v9LisLXsJ8PbsA8zRjCKGED9xTE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wdXJl/c3BvcnQuY28vY2Ru/L3Nob3AvZmlsZXMv/UFNfU29ja3NfNy5q/cGc_dj0xNzE5NDEz/NTQwJndpZHRoPTEy/MDA',
     images: [
-      'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/qAOptNDRz_LSwHq3v9LisLXsJ8PbsA8zRjCKGED9xTE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wdXJl/c3BvcnQuY28vY2Ru/L3Nob3AvZmlsZXMv/UFNfU29ja3NfNy5q/cGc_dj0xNzE5NDEz/NTQwJndpZHRoPTEy/MDA'
     ],
     description: 'Precision-engineered comfort for every stride',
     fullDescription: 'The Elite Running Socks are meticulously crafted with zone-specific cushioning and moisture management. Each pair features targeted support areas that align with foot anatomy, providing comfort and performance enhancement for runners of all levels.',
