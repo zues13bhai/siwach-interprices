@@ -205,9 +205,9 @@ export const products = [
     category: 'women',
     price: 4999,
     originalPrice: 6499,
-    image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/hzwCtkbZnhlsXfpW34VVu0P7n7tw2Y1Y3ms-jI7IcuE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErTjNodnJGWkwu/anBn',
     images: [
-      'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/hzwCtkbZnhlsXfpW34VVu0P7n7tw2Y1Y3ms-jI7IcuE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErTjNodnJGWkwu/anBn'
     ],
     description: 'Find your center with mindful movement',
     fullDescription: 'The Flow Yoga Set embodies the harmony of mind, body, and spirit. Crafted from sustainable bamboo-blend fabric, this set offers buttery-soft comfort with natural antimicrobial properties. The coordinated pieces move with your practice, providing gentle support without restriction.',
