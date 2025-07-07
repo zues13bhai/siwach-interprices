@@ -373,9 +373,9 @@ export const products = [
     category: 'new',
     price: 2999,
     originalPrice: 3999,
-    image: 'https://images.pexels.com/photos/4498606/pexels-photo-4498606.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
+    image: 'https://imgs.search.brave.com/TCQx7w1BjIDd1XNnCpVQJHJIzUxFoWChWfOWiaxVebg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC8wazgxMm82/Mm5kdHcvMWN5a3Zo/ZkNsUEtOcVFYbnNG/T1lDTC8wMjRkMjA5/YjUxMTFmMWFhMGZm/OGI3YTZlZWNhNGVk/YS9LYXlsYUl0c2lu/ZXNfSGlnaEludGVu/c2l0eVN0cmVuZ3Ro/XzVfMTAyNHg2ODNf/MjdjM2E1M19lbjNm/ZDNjNWM2YWE4ODEy/MDQyNjM5YzEyZmMy/ODZiN2ZhLmpwZz93/PTEwMjQmcT04NQ',
     images: [
-      'https://images.pexels.com/photos/4498606/pexels-photo-4498606.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
+      'https://imgs.search.brave.com/TCQx7w1BjIDd1XNnCpVQJHJIzUxFoWChWfOWiaxVebg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC8wazgxMm82/Mm5kdHcvMWN5a3Zo/ZkNsUEtOcVFYbnNG/T1lDTC8wMjRkMjA5/YjUxMTFmMWFhMGZm/OGI3YTZlZWNhNGVk/YS9LYXlsYUl0c2lu/ZXNfSGlnaEludGVu/c2l0eVN0cmVuZ3Ro/XzVfMTAyNHg2ODNf/MjdjM2E1M19lbjNm/ZDNjNWM2YWE4ODEy/MDQyNjM5YzEyZmMy/ODZiN2ZhLmpwZz93/PTEwMjQmcT04NQ'
     ],
     description: 'Professional-grade recovery for elite athletes',
     fullDescription: 'The Recovery Foam Roller is precision-engineered for deep tissue massage and myofascial release. Its unique surface pattern mimics the hands of a professional massage therapist, providing targeted pressure points for optimal muscle recovery and flexibility enhancement.',
