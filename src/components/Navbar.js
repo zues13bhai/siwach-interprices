@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingBagIcon, UserIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { logout } from '../store/authSlice';
+import { toggleCart } from '../store/cartSlice';
 import { motion } from 'framer-motion';
 
 const navigation = [
@@ -31,6 +32,10 @@ export default function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout());
+  };
+
+  const handleCartClick = () => {
+    dispatch(toggleCart());
   };
 
   const isActive = (href) => {
@@ -99,7 +104,7 @@ export default function Navbar() {
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
                   <Link 
-                    to="/cart" 
+                    onClick={handleCartClick}
                     className="relative p-2 text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-110 group"
                   >
                     <ShoppingBagIcon className="h-6 w-6" />
@@ -196,13 +201,13 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="border-t border-gray-800 pt-4 mt-4">
-                <Link
-                  to="/cart"
+                <button
+                  onClick={handleCartClick}
                   className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium flex items-center transition-colors duration-300"
                 >
                   <ShoppingBagIcon className="h-5 w-5 mr-2" />
                   Cart ({cartItems})
-                </Link>
+                </button>
                 {!isAuthenticated && (
                   <Link
                     to="/login"

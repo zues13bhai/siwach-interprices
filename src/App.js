@@ -7,6 +7,7 @@ import { store, persistor } from './store';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CartDrawer from './components/CartDrawer';
 
 // Pages
 import Home from './pages/Home';
@@ -28,6 +29,7 @@ function App() {
         <Router>
           <div className="min-h-screen flex flex-col bg-black text-white">
             <Navbar />
+            <CartDrawer />
             <main className="flex-grow">
               <Routes>
                 <Route path="/" element={<Home />} />
