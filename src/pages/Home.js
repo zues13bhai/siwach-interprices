@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import HeroSection from '../components/HeroSection';
+import HeroCarousel from '../components/HeroCarousel';
+import CategoryShowcase from '../components/CategoryShowcase';
 import FeaturedProducts from '../components/FeaturedProducts';
 import AboutSection from '../components/AboutSection';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -14,7 +15,8 @@ export default function Home() {
       transition={{ duration: 0.5 }}
       className="bg-black text-white overflow-hidden"
     >
-      <HeroSection />
+      <HeroCarousel />
+      <CategoryShowcase />
       <FeaturedProducts />
       <AboutSection />
       <TestimonialsSection />
