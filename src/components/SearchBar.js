@@ -88,6 +88,7 @@ export default function SearchBar({ isOpen, onClose }) {
             {!isLoading && query.length > 2 && results.length === 0 && (
               <div className="p-6 text-center">
                 <p className="text-gray-400">No products found for "{query}"</p>
+                <p className="text-sm text-gray-500 mt-2">Try searching for "running shoes", "hoodies", or "fitness tracker"</p>
               </div>
             )}
 
@@ -135,12 +136,12 @@ export default function SearchBar({ isOpen, onClose }) {
                 <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">
                   Popular Searches
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {['Running Shoes', 'Hoodies', 'Fitness Tracker', 'Training Shorts', 'Wireless Earbuds'].map((term) => (
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="px-4 py-2 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 text-sm"
+                      className="px-4 py-3 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200 text-sm text-left"
                     >
                       {term}
                     </button>
