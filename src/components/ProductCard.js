@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { HeartIcon, EyeIcon, ShoppingBagIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, EyeIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import ProductBadge from './ProductBadge';
 import StarRating from './StarRating';
-import QuickView from './QuickView';
 
 export default function ProductCard({ product, index = 0, className = '' }) {
   const dispatch = useDispatch();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [showQuickView, setShowQuickView] = useState(false);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -32,12 +30,6 @@ export default function ProductCard({ product, index = 0, className = '' }) {
     e.preventDefault();
     e.stopPropagation();
     setIsWishlisted(!isWishlisted);
-  };
-
-  const handleQuickView = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowQuickView(true);
   };
 
   const averageRating = product.reviews?.length > 0 
@@ -101,11 +93,10 @@ export default function ProductCard({ product, index = 0, className = '' }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleQuickView}
                 className="bg-white text-black p-3 font-bold hover:bg-gray-100 transition-colors duration-200 flex items-center gap-2"
               >
-                <MagnifyingGlassIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">QUICK VIEW</span>
+                <EyeIcon className="h-4 w-4" />
+                <span className="hidden sm:inline">VIEW</span>
               </motion.button>
               <motion.button 
                 onClick={handleAddToCart}
@@ -179,13 +170,6 @@ export default function ProductCard({ product, index = 0, className = '' }) {
           </div>
         </div>
       </Link>
-
-      {/* Quick View Modal */}
-      <QuickView 
-        product={product}
-        isOpen={showQuickView}
-        onClose={() => setShowQuickView(false)}
-      />
     </motion.div>
   );
 }

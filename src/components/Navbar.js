@@ -117,12 +117,9 @@ export default function Navbar() {
                   >
                     <button 
                       onClick={() => setIsSearchOpen(true)}
-                      className="p-2 text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-110 relative group"
+                      className="p-2 text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
                     >
                       <MagnifyingGlassIcon className="h-6 w-6" />
-                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                        Search Products
-                      </span>
                     </button>
                   </motion.div>
 
