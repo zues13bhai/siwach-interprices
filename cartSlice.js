@@ -1,3 +1,5 @@
+// src/store/cartSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -15,8 +17,6 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(
         item => item.id === newItem.id && item.size === newItem.size
       );
-      state.totalQuantity++;
-      state.totalAmount += newItem.price;
 
       if (!existingItem) {
         state.items.push({
@@ -25,40 +25,54 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
         });
       } else {
-        existingItem.quantity++;
+        existingItem.quantity += 1;
         existingItem.totalPrice += newItem.price;
       }
+
+      state.totalQuantity += 1;
+      state.totalAmount += newItem.price;
     },
 
     removeFromCart(state, action) {
       const { id, size } = action.payload;
-      const existingItem = state.items.find(item => item.id === id && item.size === size);
+      const existingItem = state.items.find(
+        item => item.id === id && item.size === size
+      );
+
       if (!existingItem) return;
 
       state.totalQuantity -= existingItem.quantity;
       state.totalAmount -= existingItem.totalPrice;
 
-      state.items = state.items.filter(item => !(item.id === id && item.size === size));
+      state.items = state.items.filter(
+        item => !(item.id === id && item.size === size)
+      );
     },
 
     increaseQuantity(state, action) {
       const { id, size } = action.payload;
-      const existingItem = state.items.find(item => item.id === id && item.size === size);
+      const existingItem = state.items.find(
+        item => item.id === id && item.size === size
+      );
+
       if (existingItem) {
-        existingItem.quantity++;
+        existingItem.quantity += 1;
         existingItem.totalPrice += existingItem.price;
-        state.totalQuantity++;
+        state.totalQuantity += 1;
         state.totalAmount += existingItem.price;
       }
     },
 
     decreaseQuantity(state, action) {
       const { id, size } = action.payload;
-      const existingItem = state.items.find(item => item.id === id && item.size === size);
+      const existingItem = state.items.find(
+        item => item.id === id && item.size === size
+      );
+
       if (existingItem && existingItem.quantity > 1) {
-        existingItem.quantity--;
+        existingItem.quantity -= 1;
         existingItem.totalPrice -= existingItem.price;
-        state.totalQuantity--;
+        state.totalQuantity -= 1;
         state.totalAmount -= existingItem.price;
       }
     },
