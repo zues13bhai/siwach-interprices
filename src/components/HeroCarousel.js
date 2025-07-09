@@ -19,7 +19,7 @@ const heroSlides = [
     title: 'STEALTH TRAINING',
     subtitle: 'WHERE ELEGANCE MEETS POWER',
     description: 'Discover our premium women\'s collection designed for the modern athlete. Sophisticated protection that adapts to every challenge.',
-    image: 'https://imgs.search.brave.com/3Bc8w4Tul-_5hmNpLm1eKDajLbtkFewUkH6rXtuMENc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTA0/MTgzNTI0Ni9waG90/by9maXRuZXNzLXdv/bWFuLXN0cmV0Y2hp/bmctYXJtcy1pbi1z/dHlsaXNoLWJsYWNr/LXNwb3J0LWNsb3Ro/ZXMuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTR1SmlFNmJQ/OWU3ZDdFRVVjYjFT/eEVsdENISUJLWTZL/U2F6Rlp0VDNwcGc9',
+    image: 'https://imgs.search.brave.com/opLHq4FLLEz9rDaFqeTn7OFjh8l8NYCE5fqccyHs5NY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9j/bG9zZS11cC13b21h/bi10cmFpbmluZ18y/My0yMTQ5MDM2NDAz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDA',
     cta: 'EXPLORE COLLECTION',
     ctaLink: '/products?category=women',
     theme: 'light'
