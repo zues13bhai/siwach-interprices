@@ -250,6 +250,7 @@ const filters = [
     description: 'Natural Movement',
   },
 ];
+export const allProducts = products;
 
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
