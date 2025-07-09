@@ -19,7 +19,7 @@ const heroSlides = [
     title: 'STEALTH TRAINING',
     subtitle: 'WHERE ELEGANCE MEETS POWER',
     description: 'Discover our premium women\'s collection designed for the modern athlete. Sophisticated protection that adapts to every challenge.',
-    image: 'https://imgs.search.brave.com/opLHq4FLLEz9rDaFqeTn7OFjh8l8NYCE5fqccyHs5NY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9j/bG9zZS11cC13b21h/bi10cmFpbmluZ18y/My0yMTQ5MDM2NDAz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDA',
+    image: 'https://imgs.search.brave.com/pmQUBo-Ufpow1NGJvwiGREuDUZfgutKAIEj5kGN-OEM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzg4Lzdi/Lzg3Lzg4N2I4N2E2/Mjg5NGZjZDM3YzRk/MzRlNzg4ZjE0OTEw/LmpwZw',
     cta: 'EXPLORE COLLECTION',
     ctaLink: '/products?category=women',
     theme: 'light'
