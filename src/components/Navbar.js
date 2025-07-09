@@ -2,10 +2,12 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { ShoppingBagIcon, UserIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon, UserIcon, Bars3Icon, XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { logout } from '../store/authSlice';
 import { motion } from 'framer-motion';
 import CartDrawer from './CartDrawer';
+import MegaMenu from './MegaMenu';
+import SearchBar from './SearchBar';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,6 +24,8 @@ export default function Navbar() {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +44,14 @@ export default function Navbar() {
       return location.pathname === '/';
     }
     return location.pathname.startsWith(href) || location.search.includes(href.split('?')[1]);
+  };
+
+  const handleMenuHover = (menuName) => {
+    setActiveMenu(menuName);
+  };
+
+  const handleMenuLeave = () => {
+    setActiveMenu(null);
   };
 
   return (
@@ -75,6 +87,8 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
+                      onMouseEnter={() => item.name !== 'Home' && handleMenuHover(item.name.toLowerCase())}
+                      onMouseLeave={handleMenuLeave}
                     >
                       <Link
                         to={item.href}
@@ -95,6 +109,20 @@ export default function Navbar() {
 
                 {/* Right Side Icons */}
                 <div className="hidden md:flex md:items-center md:space-x-4">
+                  {/* Search */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  >
+                    <button 
+                      onClick={() => setIsSearchOpen(true)}
+                      className="p-2 text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+                    >
+                      <MagnifyingGlassIcon className="h-6 w-6" />
+                    </button>
+                  </motion.div>
+
                   {/* Cart */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -227,8 +255,14 @@ export default function Navbar() {
         )}
       </Disclosure>
 
+      {/* Mega Menu */}
+      <MegaMenu activeMenu={activeMenu} onClose={handleMenuLeave} />
+
       {/* Cart Drawer */}
       <CartDrawer isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+
+      {/* Search Bar */}
+      <SearchBar isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
 }

@@ -3,20 +3,22 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { getProductById } from '../data/products';
+import { getEnhancedProductById } from '../data/enhancedProducts';
 import { StarIcon, HeartIcon, ShareIcon } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
+import ProductBadge from '../components/ProductBadge';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = getProductById(id);
+  const product = getEnhancedProductById(id);
   
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState('');
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [activeTab, setActiveTab] = useState('description');
 
   if (!product) {
     return (
@@ -43,7 +45,7 @@ export default function ProductDetail() {
   }
 
   const handleAddToCart = () => {
-    if (product.sizes.length > 1 && !selectedSize) {
+    if (product.sizes && product.sizes.length > 1 && !selectedSize) {
       setError('Please select a size');
       return;
     }
@@ -53,7 +55,7 @@ export default function ProductDetail() {
       name: product.name,
       price: product.price,
       image: product.image,
-      size: selectedSize || product.sizes[0],
+      size: selectedSize || (product.sizes && product.sizes[0]) || 'One Size',
       quantity: quantity
     }));
 
@@ -70,6 +72,30 @@ export default function ProductDetail() {
     ? product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length 
     : 0;
 
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.push(<StarIconSolid key={i} className="h-4 w-4 text-yellow-400" />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(
+          <div key={i} className="relative">
+            <StarIcon className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-0 overflow-hidden w-1/2">
+              <StarIconSolid className="h-4 w-4 text-yellow-400" />
+            </div>
+          </div>
+        );
+      } else {
+        stars.push(<StarIcon key={i} className="h-4 w-4 text-gray-400" />);
+      }
+    }
+    return stars;
+  };
+
   return (
     <div className="min-h-screen bg-black text-white pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -83,13 +109,13 @@ export default function ProductDetail() {
           <div className="flex flex-col">
             <div className="aspect-square w-full overflow-hidden bg-gray-900 border border-gray-800">
               <img
-                src={product.images[selectedImage]}
+                src={product.images ? product.images[selectedImage] : product.image}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
             </div>
             
-            {product.images.length > 1 && (
+            {product.images && product.images.length > 1 && (
               <div className="mt-4 grid grid-cols-4 gap-4">
                 {product.images.map((image, index) => (
                   <button
@@ -120,9 +146,7 @@ export default function ProductDetail() {
             {/* Badge */}
             {product.badge && (
               <div className="mb-4">
-                <span className="bg-white text-black px-4 py-2 text-sm font-bold tracking-wider">
-                  {product.badge}
-                </span>
+                <ProductBadge badge={product.badge} />
               </div>
             )}
 
@@ -133,18 +157,16 @@ export default function ProductDetail() {
             {/* Rating */}
             {product.reviews?.length > 0 && (
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIconSolid
-                      key={rating}
-                      className={`h-5 w-5 ${
-                        rating < averageRating ? 'text-yellow-400' : 'text-gray-600'
-                      }`}
-                    />
-                  ))}
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center">
+                    {renderStars(averageRating)}
+                  </div>
+                  <span className="text-sm text-gray-400">
+                    {averageRating.toFixed(1)}
+                  </span>
                 </div>
                 <span className="text-sm text-gray-400">
-                  {averageRating.toFixed(1)} ({product.reviews.length} reviews)
+                  ({product.reviews.length} reviews)
                 </span>
               </div>
             )}
@@ -169,15 +191,92 @@ export default function ProductDetail() {
             </div>
 
             {/* Description */}
-            <div className="mb-8">
-              <h3 className="text-lg font-bold text-white mb-4">Description</h3>
-              <p className="text-gray-300 leading-relaxed">
-                {product.fullDescription}
-              </p>
+            <div className="mb-8 space-y-6">
+              {/* Tabs */}
+              <div className="flex border-b border-gray-700">
+                {['description', 'specs', 'reviews'].map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-6 py-3 font-bold uppercase tracking-wider transition-colors duration-300 ${
+                      activeTab === tab
+                        ? 'text-white border-b-2 border-blue-400'
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div className="min-h-[200px]">
+                {activeTab === 'description' && (
+                  <div className="space-y-4">
+                    <p className="text-gray-300 leading-relaxed">
+                      {product.fullDescription}
+                    </p>
+                    {product.features && (
+                      <div>
+                        <h4 className="text-white font-bold mb-3">Key Features:</h4>
+                        <ul className="space-y-2">
+                          {product.features.map((feature, index) => (
+                            <li key={index} className="text-gray-300 flex items-start">
+                              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'specs' && product.specifications && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {Object.entries(product.specifications).map(([key, value]) => (
+                      <div key={key} className="flex justify-between py-2 border-b border-gray-800">
+                        <span className="text-gray-400">{key}:</span>
+                        <span className="text-white font-bold">{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeTab === 'reviews' && (
+                  <div className="space-y-6">
+                    {product.reviews?.length > 0 ? (
+                      product.reviews.map((review) => (
+                        <div key={review.id} className="bg-gray-900 border border-gray-800 p-6">
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-4">
+                              <span className="font-bold text-white">{review.name}</span>
+                              {review.verified && (
+                                <span className="text-xs bg-green-500 text-white px-2 py-1 rounded">
+                                  ✓ Verified Purchase
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="flex items-center">
+                                {renderStars(review.rating)}
+                              </div>
+                              <span className="text-xs text-gray-400">{review.date}</span>
+                            </div>
+                          </div>
+                          <p className="text-gray-300">{review.comment}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-gray-400">No reviews yet. Be the first to review this product!</p>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Size Selection */}
-            {product.sizes.length > 1 && (
+            {product.sizes && product.sizes.length > 1 && (
               <div className="mb-8">
                 <h3 className="text-lg font-bold text-white mb-4">Size</h3>
                 <div className="grid grid-cols-4 gap-3">
@@ -260,47 +359,16 @@ export default function ProductDetail() {
               </button>
             </div>
 
-            {/* Specifications */}
-            {product.specifications && (
-              <div className="mb-8">
-                <h3 className="text-lg font-bold text-white mb-4">Specifications</h3>
-                <ul className="space-y-2">
-                  {product.specifications.map((spec, index) => (
-                    <li key={index} className="text-gray-300 flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0" />
-                      {spec}
-                    </li>
-                  ))}
-                </ul>
+            {/* Delivery Info */}
+            <div className="bg-gray-900 border border-gray-800 p-6">
+              <h3 className="text-lg font-bold text-white mb-4">Delivery Information</h3>
+              <div className="space-y-2 text-sm text-gray-300">
+                <p>🚚 Free delivery on orders above ₹999</p>
+                <p>⚡ Express delivery available</p>
+                <p>💰 Cash on Delivery available</p>
+                <p>🔄 Easy returns within 30 days</p>
               </div>
-            )}
-
-            {/* Reviews */}
-            {product.reviews?.length > 0 && (
-              <div>
-                <h3 className="text-lg font-bold text-white mb-4">Customer Reviews</h3>
-                <div className="space-y-4">
-                  {product.reviews.map((review, index) => (
-                    <div key={index} className="bg-gray-900 border border-gray-800 p-4">
-                      <div className="flex items-center gap-4 mb-2">
-                        <span className="font-bold text-white">{review.name}</span>
-                        <div className="flex items-center">
-                          {[0, 1, 2, 3, 4].map((rating) => (
-                            <StarIconSolid
-                              key={rating}
-                              className={`h-4 w-4 ${
-                                rating < review.rating ? 'text-yellow-400' : 'text-gray-600'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-gray-300">{review.comment}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
           </motion.div>
         </motion.div>
       </div>
