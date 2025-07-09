@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { getProductById } from '../data/products';
+import { getEnhancedProductById } from '../data/enhancedProducts';
 import { StarIcon, HeartIcon, ShareIcon } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 import ProductBadge from '../components/ProductBadge';
@@ -11,7 +11,7 @@ import ProductBadge from '../components/ProductBadge';
 export default function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = getProductById(id);
+  const product = getEnhancedProductById(id);
   
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
@@ -95,6 +95,7 @@ export default function ProductDetail() {
     }
     return stars;
   };
+
   return (
     <div className="min-h-screen bg-black text-white pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -215,14 +216,14 @@ export default function ProductDetail() {
                     <p className="text-gray-300 leading-relaxed">
                       {product.fullDescription}
                     </p>
-                    {product.specifications && (
+                    {product.features && (
                       <div>
                         <h4 className="text-white font-bold mb-3">Key Features:</h4>
                         <ul className="space-y-2">
-                          {product.specifications.map((spec, index) => (
+                          {product.features.map((feature, index) => (
                             <li key={index} className="text-gray-300 flex items-start">
                               <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0" />
-                              {spec}
+                              {feature}
                             </li>
                           ))}
                         </ul>
@@ -233,9 +234,10 @@ export default function ProductDetail() {
 
                 {activeTab === 'specs' && product.specifications && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {product.specifications.map((spec, index) => (
-                      <div key={index} className="py-2 border-b border-gray-800">
-                        <span className="text-gray-300">{spec}</span>
+                    {Object.entries(product.specifications).map(([key, value]) => (
+                      <div key={key} className="flex justify-between py-2 border-b border-gray-800">
+                        <span className="text-gray-400">{key}:</span>
+                        <span className="text-white font-bold">{value}</span>
                       </div>
                     ))}
                   </div>
@@ -244,16 +246,22 @@ export default function ProductDetail() {
                 {activeTab === 'reviews' && (
                   <div className="space-y-6">
                     {product.reviews?.length > 0 ? (
-                      product.reviews.map((review, index) => (
-                        <div key={index} className="bg-gray-900 border border-gray-800 p-6">
+                      product.reviews.map((review) => (
+                        <div key={review.id} className="bg-gray-900 border border-gray-800 p-6">
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-4">
                               <span className="font-bold text-white">{review.name}</span>
+                              {review.verified && (
+                                <span className="text-xs bg-green-500 text-white px-2 py-1 rounded">
+                                  ✓ Verified Purchase
+                                </span>
+                              )}
                             </div>
                             <div className="flex items-center gap-2">
                               <div className="flex items-center">
                                 {renderStars(review.rating)}
                               </div>
+                              <span className="text-xs text-gray-400">{review.date}</span>
                             </div>
                           </div>
                           <p className="text-gray-300">{review.comment}</p>
@@ -290,7 +298,6 @@ export default function ProductDetail() {
                   ))}
                 </div>
                 {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
-                }
               </div>
             )}
 
@@ -363,7 +370,6 @@ export default function ProductDetail() {
             </div>
           </motion.div>
         </motion.div>
-
       </div>
     </div>
   );

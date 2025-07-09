@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, FunnelIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
-import { getProductsByCategory } from '../data/products';
+import { getEnhancedProductsByCategory } from '../data/enhancedProducts';
 import ProductCard from '../components/ProductCard';
 
 const sortOptions = [
@@ -41,7 +41,6 @@ const filters = [
     options: [
       { value: 'BESTSELLER', label: 'Bestseller', checked: false },
       { value: 'NEW', label: 'New', checked: false },
-      { value: 'NEW DROP', label: 'New Drop', checked: false },
       { value: 'PREMIUM', label: 'Premium', checked: false },
       { value: 'TECH', label: 'Tech', checked: false },
       { value: 'LIMITED', label: 'Limited', checked: false },
@@ -56,7 +55,7 @@ export default function Products() {
   const [selectedFilters, setSelectedFilters] = useState({});
 
   const category = searchParams.get('category') || 'all';
-  let products = getProductsByCategory(category);
+  let products = getEnhancedProductsByCategory(category);
 
   // Apply filters
   Object.keys(selectedFilters).forEach(filterType => {
