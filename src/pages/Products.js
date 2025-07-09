@@ -1,10 +1,8 @@
 import React, { useState, Fragment } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, FunnelIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cartSlice';
 import { getProductsByCategory } from '../data/products';
 import ProductCard from '../components/ProductCard';
 
@@ -56,7 +54,6 @@ export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
   const [selectedFilters, setSelectedFilters] = useState({});
-  const dispatch = useDispatch();
 
   const category = searchParams.get('category') || 'all';
   let products = getProductsByCategory(category);
@@ -108,16 +105,6 @@ export default function Products() {
       [filterType]: checked 
         ? [...(prev[filterType] || []), value]
         : (prev[filterType] || []).filter(v => v !== value)
-    }));
-  };
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      size: product.sizes[0] // Default to first available size
     }));
   };
 

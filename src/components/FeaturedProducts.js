@@ -1,24 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/cartSlice';
 import { getEnhancedFeaturedProducts } from '../data/enhancedProducts';
 import ProductCard from './ProductCard';
 
 export default function FeaturedProducts() {
-  const dispatch = useDispatch();
   const products = getEnhancedFeaturedProducts();
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      size: product.sizes[0] // Default to first available size
-    }));
-  };
 
   return (
     <section className="py-24 bg-gray-950 relative overflow-hidden">
