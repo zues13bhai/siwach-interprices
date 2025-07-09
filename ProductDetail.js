@@ -5,26 +5,10 @@ import { addToCart } from '../store/cartSlice';
 
 const sizes = ['6', '7', '8', '9', '10', '11', '12'];
 
-// Mock product data - in a real app, this would come from an API
-const product = {
-  id: 1,
-  name: 'Ultra Boost 21',
-  price: 180,
-  description: 'Experience epic energy with the Ultra Boost 21. These running shoes deliver incredible energy return to help you stay comfortable mile after mile.',
-  details: [
-    'Regular fit',
-    'Lace closure',
-    'adidas PRIMEKNIT+ textile upper',
-    'BOOST midsole',
-    'Continental™ Rubber outsole',
-    'Color: Cloud White / Core Black / Solar Red',
-  ],
-  images: [
-    'https://source.unsplash.com/featured/?sneakers,white',
-    'https://source.unsplash.com/featured/?sneakers,black',
-    'https://source.unsplash.com/featured/?sneakers,red',
-  ],
-};
+import products from '../data/products'; // add this to top
+
+const product = products.find((p) => p.id === parseInt(id)); // inside component
+
 
 export default function ProductDetail() {
   const { id } = useParams();
