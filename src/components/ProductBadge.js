@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const badgeConfig = {
   'BESTSELLER': {
@@ -13,6 +14,12 @@ const badgeConfig = {
     bgColor: 'bg-green-500',
     textColor: 'text-white',
     label: 'New Arrival'
+  },
+  'NEW DROP': {
+    icon: '🆕',
+    bgColor: 'bg-green-500',
+    textColor: 'text-white',
+    label: 'New Drop'
   },
   'LIMITED': {
     icon: '⚡',
@@ -49,6 +56,54 @@ const badgeConfig = {
     bgColor: 'bg-red-600',
     textColor: 'text-white',
     label: 'On Sale'
+  },
+  'ESSENTIAL': {
+    icon: '⚡',
+    bgColor: 'bg-gray-600',
+    textColor: 'text-white',
+    label: 'Essential'
+  },
+  'SUPPORT': {
+    icon: '💪',
+    bgColor: 'bg-pink-500',
+    textColor: 'text-white',
+    label: 'Support'
+  },
+  'SET': {
+    icon: '📦',
+    bgColor: 'bg-teal-500',
+    textColor: 'text-white',
+    label: 'Set'
+  },
+  'WIRELESS': {
+    icon: '📶',
+    bgColor: 'bg-blue-600',
+    textColor: 'text-white',
+    label: 'Wireless'
+  },
+  'SMART': {
+    icon: '🧠',
+    bgColor: 'bg-cyan-500',
+    textColor: 'text-white',
+    label: 'Smart'
+  },
+  'RECOVERY': {
+    icon: '🔄',
+    bgColor: 'bg-green-600',
+    textColor: 'text-white',
+    label: 'Recovery'
+  },
+  'INNOVATION': {
+    icon: '💡',
+    bgColor: 'bg-yellow-600',
+    textColor: 'text-white',
+    label: 'Innovation'
+  },
+  'COMFORT': {
+    icon: '☁️',
+    bgColor: 'bg-blue-400',
+    textColor: 'text-white',
+    label: 'Comfort'
   }
 };
 

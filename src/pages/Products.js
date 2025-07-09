@@ -5,7 +5,7 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, FunnelIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { getEnhancedProductsByCategory, searchEnhancedProducts } from '../data/enhancedProducts';
+import { getProductsByCategory } from '../data/products';
 import ProductCard from '../components/ProductCard';
 
 const sortOptions = [
@@ -42,9 +42,11 @@ const filters = [
     name: 'Collection',
     options: [
       { value: 'BESTSELLER', label: 'Bestseller', checked: false },
-      { value: 'NEW', label: 'New Drop', checked: false },
+      { value: 'NEW', label: 'New', checked: false },
+      { value: 'NEW DROP', label: 'New Drop', checked: false },
       { value: 'PREMIUM', label: 'Premium', checked: false },
       { value: 'TECH', label: 'Tech', checked: false },
+      { value: 'LIMITED', label: 'Limited', checked: false },
     ],
   },
 ];
@@ -57,7 +59,7 @@ export default function Products() {
   const dispatch = useDispatch();
 
   const category = searchParams.get('category') || 'all';
-  let products = getEnhancedProductsByCategory(category);
+  let products = getProductsByCategory(category);
 
   // Apply filters
   Object.keys(selectedFilters).forEach(filterType => {

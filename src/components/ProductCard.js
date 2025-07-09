@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { HeartIcon, EyeIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, EyeIcon, ShoppingBagIcon, StarIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
 import ProductBadge from './ProductBadge';
-import StarRating from './StarRating';
 
 export default function ProductCard({ product, index = 0, className = '' }) {
   const dispatch = useDispatch();
@@ -26,6 +26,22 @@ export default function ProductCard({ product, index = 0, className = '' }) {
     }));
   };
 
+  const handleBuyNow = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Add to cart first
+    dispatch(addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: product.sizes[0]
+    }));
+    
+    // Redirect to checkout
+    window.location.href = '/checkout';
+  };
   const handleWishlistToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -40,6 +56,29 @@ export default function ProductCard({ product, index = 0, className = '' }) {
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.push(<StarIconSolid key={i} className="h-4 w-4 text-yellow-400" />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(
+          <div key={i} className="relative">
+            <StarIcon className="h-4 w-4 text-gray-400" />
+            <div className="absolute inset-0 overflow-hidden w-1/2">
+              <StarIconSolid className="h-4 w-4 text-yellow-400" />
+            </div>
+          </div>
+        );
+      } else {
+        stars.push(<StarIcon key={i} className="h-4 w-4 text-gray-400" />);
+      }
+    }
+    return stars;
+  };
   return (
     <motion.div
       initial={{ y: 50, opacity: 0 }}
@@ -135,7 +174,9 @@ export default function ProductCard({ product, index = 0, className = '' }) {
           {/* Rating */}
           {product.reviews?.length > 0 && (
             <div className="flex items-center gap-2">
-              <StarRating rating={averageRating} size="sm" />
+              <div className="flex items-center">
+                {renderStars(averageRating)}
+              </div>
               <span className="text-xs text-gray-400">
                 ({product.reviews.length})
               </span>
@@ -162,11 +203,25 @@ export default function ProductCard({ product, index = 0, className = '' }) {
               {product.inStock ? '✅ In Stock' : '❌ Out of Stock'}
             </span>
             
-            {product.deliveryEstimate && (
-              <span className="text-xs text-gray-400">
-                🚚 {product.deliveryEstimate}
-              </span>
-            )}
+            <span className="text-xs text-gray-400">
+              🚚 2-3 days
+            </span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-2 pt-4">
+            <button
+              onClick={handleBuyNow}
+              className="flex-1 bg-white text-black py-2 px-4 font-bold text-sm hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              BUY NOW
+            </button>
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 border-2 border-white text-white py-2 px-4 font-bold text-sm hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+            >
+              ADD TO CART
+            </button>
           </div>
         </div>
       </Link>
