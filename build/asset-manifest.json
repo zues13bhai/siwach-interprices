@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.8520d5c1.css",
-    "main.js": "/static/js/main.6f778f5e.js",
+    "main.css": "/static/css/main.2e16644b.css",
+    "main.js": "/static/js/main.8155bcc5.js",
     "index.html": "/index.html",
     "static/media/AdihausDIN-Bold.woff2": "/static/media/AdihausDIN-Bold.31d6cfe0d16ae931b73c.woff2",
     "static/media/AdihausDIN-Regular.woff2": "/static/media/AdihausDIN-Regular.31d6cfe0d16ae931b73c.woff2",
-    "main.8520d5c1.css.map": "/static/css/main.8520d5c1.css.map",
-    "main.6f778f5e.js.map": "/static/js/main.6f778f5e.js.map"
+    "main.2e16644b.css.map": "/static/css/main.2e16644b.css.map",
+    "main.8155bcc5.js.map": "/static/js/main.8155bcc5.js.map"
   },
   "entrypoints": [
-    "static/css/main.8520d5c1.css",
-    "static/js/main.6f778f5e.js"
+    "static/css/main.2e16644b.css",
+    "static/js/main.8155bcc5.js"
   ]
 }
