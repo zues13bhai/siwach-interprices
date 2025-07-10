@@ -19,7 +19,7 @@ const heroSlides = [
     title: 'STEALTH TRAINING',
     subtitle: 'WHERE ELEGANCE MEETS POWER',
     description: 'Discover our premium women\'s collection designed for the modern athlete. Sophisticated protection that adapts to every challenge.',
-    image: 'https://www.shutterstock.com/shutterstock/photos/2230486103/display_1500/stock-photo-sporty-woman-exercising-with-weight-plate-in-the-gym-2230486103.jpg',
+    image: 'https://i.pinimg.com/1200x/22/cb/77/22cb77a7b779b6c6ccb6d50d31e7ea15.jpg',
     cta: 'EXPLORE COLLECTION',
     ctaLink: '/products?category=women',
     theme: 'light'
