@@ -2,11 +2,11 @@ import React, { useState, Fragment } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ChevronDownIcon, FunnelIcon, StarIcon } from '@heroicons/react/20/solid';
+import { XMarkIcon, FunnelIcon, EyeIcon, HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, StarIcon } from '@heroicons/react/20/solid';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { allProducts, getProductsByCategory } from '../data/products';
+import { getEnhancedProductsByCategory, enhancedProducts } from '../data/enhancedProducts';
 
 const sortOptions = [
   { name: 'Most Popular', value: 'popular', current: true },
@@ -21,11 +21,8 @@ const filters = [
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'running', label: 'Running', checked: false },
-      { value: 'training', label: 'Training', checked: false },
-      { value: 'lifestyle', label: 'Lifestyle', checked: false },
-      { value: 'soccer', label: 'Soccer', checked: false },
-      { value: 'basketball', label: 'Basketball', checked: false },
+      { value: 'men', label: 'Men', checked: false },
+      { value: 'women', label: 'Women', checked: false },
       { value: 'tech', label: 'Tech', checked: false },
     ],
   },
@@ -43,10 +40,10 @@ const filters = [
     id: 'badge',
     name: 'Collection',
     options: [
-      { value: 'Bestseller', label: 'Bestseller', checked: false },
-      { value: 'New', label: 'New Arrivals', checked: false },
-      { value: 'Premium', label: 'Premium', checked: false },
-      { value: 'Tech', label: 'Tech', checked: false },
+      { value: 'BESTSELLER', label: 'Bestseller', checked: false },
+      { value: 'NEW', label: 'New Arrivals', checked: false },
+      { value: 'PREMIUM', label: 'Premium', checked: false },
+      { value: 'TECH', label: 'Tech', checked: false },
     ],
   },
 ];
@@ -76,7 +73,7 @@ export default function Products() {
   const category = searchParams.get('category');
   
   // Get products based on category
-  let products = category ? getProductsByCategory(category) : allProducts;
+  let products = category ? getEnhancedProductsByCategory(category) : enhancedProducts;
 
   // Apply additional filters
   Object.keys(selectedFilters).forEach(filterType => {
@@ -115,7 +112,7 @@ export default function Products() {
       case 'newest':
         return b.id - a.id;
       case 'rating':
-        return (b.rating || 0) - (a.rating || 0);
+        return (b.reviews?.length || 0) - (a.reviews?.length || 0);
       default:
         return b.featured ? 1 : -1;
     }
@@ -135,8 +132,8 @@ export default function Products() {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.imageSrc,
-      size: 'M' // Default size
+      image: product.image,
+      size: product.sizes?.[0] || 'One Size'
     }));
   };
 
@@ -146,7 +143,7 @@ export default function Products() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-black text-white pt-20">
       {/* Mobile filter dialog */}
       <Transition.Root show={mobileFiltersOpen} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
@@ -159,7 +156,7 @@ export default function Products() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-75" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-40 flex">
@@ -172,29 +169,29 @@ export default function Products() {
               leaveFrom="translate-x-0"
               leaveTo="translate-x-full"
             >
-              <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+              <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-gray-900 py-4 pb-12 shadow-xl border-l border-gray-800">
                 <div className="flex items-center justify-between px-4">
-                  <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+                  <h2 className="text-lg font-bold text-white">Filters</h2>
                   <button
                     type="button"
-                    className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                    className="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-gray-400 hover:text-white"
                     onClick={() => setMobileFiltersOpen(false)}
                   >
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
 
-                <form className="mt-4 border-t border-gray-200">
+                <form className="mt-4 border-t border-gray-800">
                   {filters.map((section) => (
-                    <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
+                    <Disclosure as="div" key={section.id} className="border-b border-gray-800 px-4 py-6">
                       {({ open }) => (
                         <>
                           <h3 className="-mx-2 -my-3 flow-root">
-                            <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">{section.name}</span>
+                            <Disclosure.Button className="flex w-full items-center justify-between bg-transparent px-2 py-3 text-gray-400 hover:text-white">
+                              <span className="font-medium text-white">{section.name}</span>
                               <span className="ml-6 flex items-center">
                                 <ChevronDownIcon
-                                  className={`h-5 w-5 ${open ? '-rotate-180' : 'rotate-0'}`}
+                                  className={`h-5 w-5 transform ${open ? '-rotate-180' : 'rotate-0'}`}
                                   aria-hidden="true"
                                 />
                               </span>
@@ -205,16 +202,16 @@ export default function Products() {
                               {section.options.map((option, optionIdx) => (
                                 <div key={option.value} className="flex items-center">
                                   <input
-                                    id={`filter-${section.id}-${optionIdx}`}
+                                    id={`filter-mobile-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
                                     defaultValue={option.value}
                                     type="checkbox"
                                     onChange={(e) => handleFilterChange(section.id, option.value, e.target.checked)}
-                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    className="h-4 w-4 rounded border-gray-700 bg-gray-800 text-accent focus:ring-accent"
                                   />
                                   <label
-                                    htmlFor={`filter-${section.id}-${optionIdx}`}
-                                    className="ml-3 text-sm text-gray-600"
+                                    htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                    className="ml-3 text-sm text-gray-300"
                                   >
                                     {option.label}
                                   </label>
@@ -235,14 +232,17 @@ export default function Products() {
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24"
+          className="flex items-baseline justify-between border-b border-gray-800 pb-6 pt-8"
           {...fadeInUp}
         >
           <div>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              {getCategoryTitle()}
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-4 font-display">
+              {getCategoryTitle().split(' ')[0]}
+              <span className="block gradient-text">
+                {getCategoryTitle().split(' ').slice(1).join(' ')}
+              </span>
             </h1>
-            <p className="mt-2 text-gray-600">
+            <p className="text-gray-400 font-light">
               {sortedProducts.length} products available
             </p>
           </div>
@@ -250,10 +250,10 @@ export default function Products() {
           <div className="flex items-center">
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-300 hover:text-white">
                   Sort
                   <ChevronDownIcon
-                    className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-300"
                     aria-hidden="true"
                   />
                 </Menu.Button>
@@ -268,7 +268,7 @@ export default function Products() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl bg-gray-900 shadow-dark ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-800">
                   <div className="py-1">
                     {sortOptions.map((option) => (
                       <Menu.Item key={option.name}>
@@ -276,9 +276,9 @@ export default function Products() {
                           <button
                             onClick={() => setSortBy(option.value)}
                             className={`${
-                              active ? 'bg-gray-100' : ''
+                              active ? 'bg-gray-800' : ''
                             } ${
-                              sortBy === option.value ? 'font-medium text-gray-900' : 'text-gray-500'
+                              sortBy === option.value ? 'font-medium text-white' : 'text-gray-300'
                             } block px-4 py-2 text-sm w-full text-left`}
                           >
                             {option.name}
@@ -293,7 +293,7 @@ export default function Products() {
 
             <button
               type="button"
-              className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+              className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-300 sm:ml-6 lg:hidden"
               onClick={() => setMobileFiltersOpen(true)}
             >
               <span className="sr-only">Filters</span>
@@ -311,15 +311,15 @@ export default function Products() {
             {/* Filters */}
             <form className="hidden lg:block">
               {filters.map((section) => (
-                <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+                <Disclosure as="div" key={section.id} className="border-b border-gray-800 py-6">
                   {({ open }) => (
                     <>
                       <h3 className="-my-3 flow-root">
-                        <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                          <span className="font-medium text-gray-900">{section.name}</span>
+                        <Disclosure.Button className="flex w-full items-center justify-between bg-transparent py-3 text-sm text-gray-400 hover:text-gray-300">
+                          <span className="font-medium text-white">{section.name}</span>
                           <span className="ml-6 flex items-center">
                             <ChevronDownIcon
-                              className={`h-5 w-5 ${open ? '-rotate-180' : 'rotate-0'}`}
+                              className={`h-5 w-5 transform ${open ? '-rotate-180' : 'rotate-0'}`}
                               aria-hidden="true"
                             />
                           </span>
@@ -335,11 +335,11 @@ export default function Products() {
                                 defaultValue={option.value}
                                 type="checkbox"
                                 onChange={(e) => handleFilterChange(section.id, option.value, e.target.checked)}
-                                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                className="h-4 w-4 rounded border-gray-700 bg-gray-800 text-accent focus:ring-accent"
                               />
                               <label
                                 htmlFor={`filter-${section.id}-${optionIdx}`}
-                                className="ml-3 text-sm text-gray-600"
+                                className="ml-3 text-sm text-gray-300"
                               >
                                 {option.label}
                               </label>
@@ -365,78 +365,93 @@ export default function Products() {
                   <motion.div
                     key={product.id}
                     variants={fadeInUp}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
-                    className="group relative bg-white rounded-2xl shadow-lg overflow-hidden"
+                    className="group relative card-premium overflow-hidden"
                   >
-                    <div className="relative">
+                    <div className="relative overflow-hidden">
                       <img
-                        src={product.imageSrc}
+                        src={product.image}
                         alt={product.name}
-                        className="h-80 w-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                        className="h-80 w-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
                       />
                       
                       {/* Badge */}
                       {product.badge && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        <div className="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">
                           {product.badge}
                         </div>
                       )}
                       
                       {/* Discount */}
                       {product.originalPrice && (
-                        <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                           {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                         </div>
                       )}
 
                       {/* Quick Actions */}
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <div className="flex gap-2">
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                        <div className="flex gap-3">
+                          <button className="p-3 bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition-colors duration-200 rounded-xl">
+                            <EyeIcon className="h-5 w-5" />
+                          </button>
+                          <button className="p-3 bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition-colors duration-200 rounded-xl">
+                            <HeartIcon className="h-5 w-5" />
+                          </button>
                           <button
                             onClick={() => handleAddToCart(product)}
-                            className="bg-white text-gray-900 px-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors transform hover:scale-105"
+                            className="p-3 bg-accent text-white hover:bg-accent-600 transition-colors duration-200 rounded-xl"
                           >
-                            Add to Cart
+                            <ShoppingBagIcon className="h-5 w-5" />
                           </button>
-                          <Link
-                            to={`/product/${product.id}`}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors transform hover:scale-105"
-                          >
-                            View Details
-                          </Link>
                         </div>
                       </div>
                     </div>
                     
                     <div className="p-6">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {product.name}
-                        </h3>
-                        {product.rating && (
+                        <div className="text-xs text-accent uppercase tracking-wider font-bold">
+                          {product.category}
+                        </div>
+                        {product.reviews?.length > 0 && (
                           <div className="flex items-center">
                             <StarIcon className="h-4 w-4 text-yellow-400" />
-                            <span className="text-sm text-gray-600 ml-1">{product.rating}</span>
+                            <span className="text-sm text-gray-400 ml-1">
+                              {(product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length).toFixed(1)}
+                            </span>
                           </div>
                         )}
                       </div>
                       
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+                      <h3 className="text-lg font-bold text-white group-hover:text-accent transition-colors duration-300 leading-tight mb-3">
+                        <Link to={`/product/${product.id}`}>
+                          {product.name}
+                        </Link>
+                      </h3>
+                      
+                      <p className="text-gray-400 text-sm mb-4 line-clamp-2 leading-relaxed">
+                        {product.description}
+                      </p>
                       
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="text-2xl font-black text-gray-900">₹{product.price.toLocaleString()}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl font-black text-white">
+                            ₹{product.price.toLocaleString()}
+                          </span>
                           {product.originalPrice && (
-                            <span className="text-lg text-gray-500 line-through">₹{product.originalPrice.toLocaleString()}</span>
+                            <span className="text-lg text-gray-500 line-through">
+                              ₹{product.originalPrice.toLocaleString()}
+                            </span>
                           )}
                         </div>
                         
-                        {product.inStock ? (
-                          <span className="text-green-600 text-sm font-bold">In Stock</span>
-                        ) : (
-                          <span className="text-red-600 text-sm font-bold">Out of Stock</span>
-                        )}
+                        <span className={`text-xs font-bold ${
+                          product.inStock ? 'text-green-400' : 'text-red-400'
+                        }`}>
+                          {product.inStock ? '✅ In Stock' : '❌ Out of Stock'}
+                        </span>
                       </div>
                     </div>
                   </motion.div>
@@ -448,11 +463,11 @@ export default function Products() {
                   className="text-center py-12"
                   {...fadeInUp}
                 >
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">No products found</h3>
-                  <p className="text-gray-600 mb-8">Try adjusting your filters or search criteria.</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">No products found</h3>
+                  <p className="text-gray-400 mb-8">Try adjusting your filters or search criteria.</p>
                   <Link
                     to="/products"
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+                    className="bg-accent text-white px-6 py-3 rounded-xl font-bold hover:bg-accent-600 transition-colors"
                   >
                     View All Products
                   </Link>
