@@ -367,7 +367,7 @@ export default function Home() {
               },
               {
                 name: "Women's Collection",
-                image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+                image: 'https://imgs.search.brave.com/OgQSuLJcFDRbAQ06I1mAPuqS2NkGQYQ8zg8LYIF4N30/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/d2VhcmV0YWxhLmNv/bS9jZG4vc2hvcC9m/aWxlcy9EYXlmbGV4/X1J1Y2hlZHN0cmFw/YmFuZGVhdWJyYV9T/aGFkb3dibGFja18x/MzUyLmpwZz92PTE3/MzcxMjE3MTYmd2lk/dGg9MzAw',
                 href: '/products?category=women',
                 description: 'Where elegance meets power'
               },
