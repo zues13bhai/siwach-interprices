@@ -11,7 +11,7 @@ export default function Checkout() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    email: 'theoriginalhitesh@gmail.com',
+    email: '',
     phone: '',
     address: '',
     city: '',

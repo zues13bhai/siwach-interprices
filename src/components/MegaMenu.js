@@ -37,9 +37,9 @@ const megaMenuData = {
       {
         name: 'Footwear',
         items: [
-          { name: 'Running Shoes', href: '/products?category=women&type=running', image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=300' },
-          { name: 'Training Shoes', href: '/products?category=women&type=training', image: 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=300' },
-          { name: 'Lifestyle Sneakers', href: '/products?category=women&type=lifestyle', image: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=300' }
+          { name: 'Running Shoes', href: '/products?category=women&type=running', image: 'https://i.pinimg.com/1200x/f1/31/16/f13116cbb3a4e1cabcc24c077e5c4719.jpg' },
+          { name: 'Training Shoes', href: '/products?category=women&type=training', image: 'https://i.pinimg.com/1200x/f1/31/16/f13116cbb3a4e1cabcc24c077e5c4719.jpg' },
+          { name: 'Lifestyle Sneakers', href: '/products?category=women&type=lifestyle', image: 'https://i.pinimg.com/1200x/f1/31/16/f13116cbb3a4e1cabcc24c077e5c4719.jpg' }
         ]
       },
       {

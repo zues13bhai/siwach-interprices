@@ -16,7 +16,7 @@ const categories = [
     id: 'women',
     name: "Women's Collection",
     description: 'Where elegance meets athletic excellence',
-    image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+    image: 'https://imgs.search.brave.com/0lRL0j0zq2ctV349Ugbu_VukyM51OuBImWqsXgNg3eE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM0L2M4/LzQzLzM0Yzg0M2Fh/OTVjZGU4YWRlMGFh/ZjE4MGUyNzA1Njk5/LmpwZw',
     href: '/products?category=women',
     featured: 'Stealth Training Series',
     stats: '150+ Products'

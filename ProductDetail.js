@@ -2,36 +2,22 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
+import { allProducts } from '../data/products'; // ✅ Correct import from your data file
 
 const sizes = ['6', '7', '8', '9', '10', '11', '12'];
 
-// Mock product data - in a real app, this would come from an API
-const product = {
-  id: 1,
-  name: 'Ultra Boost 21',
-  price: 180,
-  description: 'Experience epic energy with the Ultra Boost 21. These running shoes deliver incredible energy return to help you stay comfortable mile after mile.',
-  details: [
-    'Regular fit',
-    'Lace closure',
-    'adidas PRIMEKNIT+ textile upper',
-    'BOOST midsole',
-    'Continental™ Rubber outsole',
-    'Color: Cloud White / Core Black / Solar Red',
-  ],
-  images: [
-    'https://source.unsplash.com/featured/?sneakers,white',
-    'https://source.unsplash.com/featured/?sneakers,black',
-    'https://source.unsplash.com/featured/?sneakers,red',
-  ],
-};
-
 export default function ProductDetail() {
-  const { id } = useParams();
+  const { id } = useParams(); // ✅ id is now available here
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
   const [error, setError] = useState('');
+
+  const product = allProducts.find((p) => p.id === parseInt(id)); // ✅ Inside component
+
+  if (!product) {
+    return <div className="text-center py-20 text-xl text-red-500">Product not found!</div>;
+  }
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -39,13 +25,15 @@ export default function ProductDetail() {
       return;
     }
 
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      size: selectedSize,
-      image: product.images[0],
-    }));
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        size: selectedSize,
+        image: product.imageSrc || product.images?.[0], // Support both naming conventions
+      })
+    );
 
     setError('');
   };
@@ -57,26 +45,30 @@ export default function ProductDetail() {
         <div className="flex flex-col">
           <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden">
             <img
-              src={product.images[selectedImage]}
+              src={product.images?.[selectedImage] || product.imageSrc}
               alt={product.name}
               className="w-full h-full object-center object-cover"
             />
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-4">
-            {product.images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`aspect-w-1 aspect-h-1 rounded-lg overflow-hidden ${selectedImage === index ? 'ring-2 ring-accent' : ''}`}
-              >
-                <img
-                  src={image}
-                  alt={`${product.name} ${index + 1}`}
-                  className="w-full h-full object-center object-cover"
-                />
-              </button>
-            ))}
-          </div>
+          {product.images && (
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(index)}
+                  className={`aspect-w-1 aspect-h-1 rounded-lg overflow-hidden ${
+                    selectedImage === index ? 'ring-2 ring-accent' : ''
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`${product.name} ${index + 1}`}
+                    className="w-full h-full object-center object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Product info */}
@@ -105,9 +97,11 @@ export default function ProductDetail() {
                         setSelectedSize(size);
                         setError('');
                       }}
-                      className={`${selectedSize === size
-                        ? 'border-accent bg-accent text-white'
-                        : 'border-gray-300 bg-white text-gray-900'} border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium hover:bg-gray-50`}
+                      className={`${
+                        selectedSize === size
+                          ? 'border-accent bg-accent text-white'
+                          : 'border-gray-300 bg-white text-gray-900'
+                      } border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium hover:bg-gray-50`}
                     >
                       {size}
                     </button>
@@ -127,16 +121,18 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <div className="mt-10">
-            <h2 className="text-sm font-medium text-gray-900">Details</h2>
-            <div className="mt-4 prose prose-sm text-gray-500">
-              <ul role="list">
-                {product.details.map((detail) => (
-                  <li key={detail}>{detail}</li>
-                ))}
-              </ul>
+          {product.details && (
+            <div className="mt-10">
+              <h2 className="text-sm font-medium text-gray-900">Details</h2>
+              <div className="mt-4 prose prose-sm text-gray-500">
+                <ul role="list">
+                  {product.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

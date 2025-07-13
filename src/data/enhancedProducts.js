@@ -64,9 +64,9 @@ export const enhancedProducts = [
     category: 'men',
     price: 4999,
     originalPrice: 6999,
-    image: 'https://imgs.search.brave.com/EWNzEKvIzYdd4wr6K-jeZjdw0y7KKu2a8EvOuQt7bnw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQ3OTMyOTAxL2Mv/NTY5LzU2OS81NS81/L2lsLzVlNWY4OC81/NTE5MjkyNTY5L2ls/XzYwMHg2MDAuNTUx/OTI5MjU2OV81a3c1/LmpwZw',
+    image: 'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
     images: [
-      'https://imgs.search.brave.com/EWNzEKvIzYdd4wr6K-jeZjdw0y7KKu2a8EvOuQt7bnw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQ3OTMyOTAxL2Mv/NTY5LzU2OS81NS81/L2lsLzVlNWY4OC81/NTE5MjkyNTY5L2ls/XzYwMHg2MDAuNTUx/OTI5MjU2OV81a3c1/LmpwZw'
+      'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
     ],
     description: 'Where street culture meets athletic excellence',
     fullDescription: 'The Urban Strike Hoodie embodies the spirit of modern athleticism. Crafted from premium organic cotton blend with moisture-wicking technology, this hoodie transitions seamlessly from gym to street. Features include a hidden phone pocket with secure zipper, reinforced stress points for durability, and our signature reflective logo that catches light beautifully.',
@@ -113,9 +113,9 @@ export const enhancedProducts = [
     category: 'women',
     price: 6999,
     originalPrice: 8999,
-    image: 'https://imgs.search.brave.com/qP48qxMfbfFNo0G-8eZa1yHvihyqXjcp0le6ZJZ6DiE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErLU9mYjBYMkwu/anBn',
+    image: 'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop',
     images: [
-      'https://imgs.search.brave.com/qP48qxMfbfFNo0G-8eZa1yHvihyqXjcp0le6ZJZ6DiE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjErLU9mYjBYMkwu/anBn'
+      'https://images.pexels.com/photos/7432771/pexels-photo-7432771.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop'
     ],
     description: 'Conquer every element with sophisticated protection',
     fullDescription: 'The Stealth Training Jacket represents the perfect fusion of style and performance. Engineered with our exclusive WeatherShield™ technology, it adapts to changing conditions while maintaining breathability. The sleek silhouette flatters your form while providing unrestricted movement.',
